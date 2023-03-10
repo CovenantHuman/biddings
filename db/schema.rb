@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_10_005657) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_10_011429) do
   create_table "to_do_items", force: :cascade do |t|
     t.integer "to_do_list_id", null: false
-    t.boolean "completed"
-    t.string "name"
+    t.boolean "completed", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["to_do_list_id"], name: "index_to_do_items_on_to_do_list_id"
@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_005657) do
     t.string "name"
     t.integer "giver_id", null: false
     t.integer "recipient_id", null: false
-    t.boolean "active"
+    t.boolean "active", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["giver_id"], name: "index_to_do_lists_on_giver_id"
@@ -32,8 +32,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_005657) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
+    t.string "email", null: false
+    t.string "password_digest", null: false
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
