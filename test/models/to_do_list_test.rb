@@ -31,4 +31,17 @@ class ToDoListTest < ActiveSupport::TestCase
     to_do_list = ToDoList.new(giver: users(:user_one), recipient: users(:user_two), active: true)
     assert to_do_list.save
   end
+
+  test "all fields other than name are not nullable on the model" do
+    to_do_list = ToDoList.new
+    assert_not to_do_list.save
+    to_do_list = ToDoList.new(giver: nil, recipient: users(:user_two), active: true)
+    assert_not to_do_list.save
+    to_do_list = ToDoList.new(giver: users(:user_one), recipient: nil, active: true)
+    assert_not to_do_list.save
+    to_do_list = ToDoList.new(giver: users(:user_one), recipient: users(:user_two), active: nil)
+    assert_not to_do_list.save
+    to_do_list = ToDoList.new(giver: users(:user_one), recipient: users(:user_two), active: true)
+    assert to_do_list.save
+  end
 end

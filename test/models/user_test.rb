@@ -37,7 +37,6 @@ class UserTest < ActiveSupport::TestCase
   end 
 
   test "emails are required to be in a certain format" do
-    skip("This functionality is not yet implemented.")
     user_with_bad_email = User.new(email: "userexamplecom", name: "user", password_digest: "test")
     assert_not user_with_bad_email.save
   end
@@ -70,8 +69,18 @@ class UserTest < ActiveSupport::TestCase
     assert user.save
   end
 
+  test "email and password_digest should not be null on model" do
+    user = User.new
+    assert_not user.save
+    user = User.new(email: "user@example.com", password_digest: nil)
+    assert_not user.save
+    user = User.new(email: nil, password_digest: "test")
+    assert_not user.save
+    user = User.new(email: "user@example.com", password_digest: "test")
+    assert user.save
+  end
+
   test "emails should be unique" do
-    skip("This functionality is not yet implemented.")
     user = User.new(email: "user@example.com", name: "user", password_digest: "test")
     user.save
     second_user = User.new(email: "user@example.com", name: "second_user", password_digest: "test")
