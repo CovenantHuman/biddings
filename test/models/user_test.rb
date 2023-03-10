@@ -56,15 +56,15 @@ class UserTest < ActiveSupport::TestCase
   test "email and password_digest should not be null in the database" do
     user = User.new
     assert_raises(ActiveRecord::NotNullViolation) do 
-      user.save
+      user.save(validate: false)
     end
     user = User.new(email: "user@example.com", password_digest: nil)
     assert_raises(ActiveRecord::NotNullViolation) do 
-      user.save
+      user.save(validate: false)
     end
     user = User.new(email: nil, password_digest: "test")
     assert_raises(ActiveRecord::NotNullViolation) do 
-      user.save
+      user.save(validate: false)
     end
     user = User.new(email: "user@example.com", password_digest: "test")
     assert user.save

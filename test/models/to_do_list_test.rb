@@ -26,7 +26,7 @@ class ToDoListTest < ActiveSupport::TestCase
     end
     to_do_list = ToDoList.new(giver: users(:user_one), recipient: users(:user_two), active: nil)
     assert_raises(ActiveRecord::NotNullViolation) do 
-      to_do_list.save
+      to_do_list.save(validate: false)
     end
     to_do_list = ToDoList.new(giver: users(:user_one), recipient: users(:user_two), active: true)
     assert to_do_list.save
