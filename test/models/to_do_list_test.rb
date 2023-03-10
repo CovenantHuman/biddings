@@ -10,4 +10,25 @@ class ToDoListTest < ActiveSupport::TestCase
     assert_equal "one", saved_to_do_list.giver.name
     assert_equal "two", saved_to_do_list.recipient.name
   end
+
+  test "all fields other than name are not nullable in the database" do 
+    to_do_list = ToDoList.new
+    assert_raises(ActiveRecord::NotNullViolation) do 
+      to_do_list.save(validate: false)
+    end
+    to_do_list = ToDoList.new(giver: nil, recipient: users(:user_two), active: true)
+    assert_raises(ActiveRecord::NotNullViolation) do
+      to_do_list.save(validate: false)
+    end
+    to_do_list = ToDoList.new(giver: users(:user_one), recipient: nil, active: true)
+    assert_raises(ActiveRecord::NotNullViolation) do 
+      to_do_list.save(validate: false)
+    end
+    to_do_list = ToDoList.new(giver: users(:user_one), recipient: users(:user_two), active: nil)
+    assert_raises(ActiveRecord::NotNullViolation) do 
+      to_do_list.save
+    end
+    to_do_list = ToDoList.new(giver: users(:user_one), recipient: users(:user_two), active: true)
+    assert to_do_list.save
+  end
 end

@@ -2,10 +2,10 @@
 
 user_one:
   email: "one@example.com"
-  password: "test"
+  password_digest: "test"
   name: "one"
 
 user_two:
   email: "two@example.com"
-  password: "test"
+  password_digest: "test"
   name: "two"
