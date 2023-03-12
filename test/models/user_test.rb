@@ -102,4 +102,11 @@ class UserTest < ActiveSupport::TestCase
     saved_user = User.find_by email: "user@example.com"
     flunk
   end
+
+  test "email should be case insensitive" do
+    user = User.new(email: "user@example.com", name: "user", password_digest: "test")
+    user.save
+    user_should_fail = User.new(email: "USER@example.com", name: "user", password_digest: "test")
+    assert_not user_should_fail.save
+  end
 end
