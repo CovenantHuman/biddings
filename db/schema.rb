@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_10_011429) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_01_014507) do
   create_table "to_do_items", force: :cascade do |t|
     t.integer "to_do_list_id", null: false
     t.boolean "completed", null: false
@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_011429) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "to_do_items", "to_do_lists"
