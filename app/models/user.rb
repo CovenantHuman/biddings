@@ -25,7 +25,7 @@ class User < ApplicationRecord
     def unconfirmed?
         !confirmed?
     end
-
+    
     private
 
     def downcase_email
