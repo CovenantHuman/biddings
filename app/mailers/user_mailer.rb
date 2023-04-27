@@ -16,6 +16,6 @@ class UserMailer < ApplicationMailer
     @user = user
     @password_reset_token = password_reset_token
 
-    mail to: @user.email, subject "Password Reset Instructions"
+    mail to: @user.email, subject: "Password Reset Instructions"
   end
 end
