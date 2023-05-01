@@ -30,4 +30,8 @@ module Authentication
         Current.user.present?
     end
 
+    def authenticate_user!
+        redirect_to login_path, alert: "You need to login to access that page."
+    end
+
 end
