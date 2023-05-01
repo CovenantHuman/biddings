@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "login", to: "sessions#new"
   resources :passwords, only: [:create, :edit, :new, :update], param: :password_reset_token
   put "account", to: "users#update"
-  get "account", to "users#edit"
+  get "account", to: "users#edit"
   delete "account", to: "users#destroy"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
