@@ -31,7 +31,9 @@ module Authentication
     end
 
     def authenticate_user!
-        redirect_to login_path, alert: "You need to login to access that page."
+        unless user_signed_in? do
+            redirect_to login_path, alert: "You need to login to access that page."
+        end
     end
 
 end
