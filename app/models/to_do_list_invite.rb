@@ -3,4 +3,8 @@ class ToDoListInvite < ApplicationRecord
     :belongs_to :inviter, class_name: "User", inverse_of: :to_do_list_invites
     :belongs_to :giver, class_name: "User"
     :belongs_to :recipient, class_name: "User"
+
+    def accepted?
+        to_do_list != null
+    end
 end
