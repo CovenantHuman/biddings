@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   put "account", to: "users#update"
   get "account", to: "users#edit"
   delete "account", to: "users#destroy"
+  get "dashboard", to: "dashboard#show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
