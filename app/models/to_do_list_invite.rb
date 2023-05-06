@@ -9,6 +9,6 @@ class ToDoListInvite < ApplicationRecord
     end
 
     def send_to_do_list_invitation_email!
-        ToDoListInviteMailer.invite(self).deliver_now
+        ToDoListInviteMailer.invitation(self).deliver_now
     end
 end
