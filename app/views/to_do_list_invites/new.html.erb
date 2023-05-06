@@ -1,10 +1,10 @@
-<%= form_with model:@to_do_list_invite do |form| %>
+<%= form_with model: @to_do_list_invite do |form| %>
     <div>
         <%= form.label :invitee_email %>
         <%= form.email_field :invitee_email, required: true %>
     </div>
     <div>
-        <%= form.radio_button :role, "giver" %>
+        <%= form.radio_button :role, "giver", required: true %>
         <%= form.label :giver, "I want to assign to dos to this person." %>
         <%= form.radio_button :role, "recipient" %>
         <%= form.label :recipient, "I want this person to assign to dos to me." %>
