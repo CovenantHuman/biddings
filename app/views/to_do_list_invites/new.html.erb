@@ -1,4 +1,4 @@
-<%= form_with url: to_do_list_invites_path do |form| %>
+<%= form_with model:@to_do_list_invite do |form| %>
     <div>
         <%= form.label :invitee_email %>
         <%= form.email_field :invitee_email, required: true %>
@@ -9,5 +9,5 @@
         <%= form.radio_button :role, "recipient" %>
         <%= form.label :recipient, "I want this person to assign to dos to me." %>
     </div>
-    <%= form.submit "Invite"%>
+    <%= form.submit "Invite" %>
 <% end %>
