@@ -1,1 +1,8 @@
+<% unless @invitations.blank? %>
+    <h2>Pending invitations</h2>
+    <% for invitation in @invitations do %>
+        <p><%= invitation.inviter.name%> (<%= invitation.inviter.email %>) invited you to share to do lists!</p>
+    <% end %>
+<% end %>
+
 <p><%= link_to "Invite!", new_to_do_list_invite_path %></p>
