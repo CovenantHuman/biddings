@@ -8,6 +8,8 @@
         <%= form.label :giver, "I want to assign to dos to this person." %>
         <%= form.radio_button :role, "recipient" %>
         <%= form.label :recipient, "I want this person to assign to dos to me." %>
+        <%= form.radio_button :role, "both" %>
+        <%= form.label :both %>
     </div>
     <%= form.submit "Invite" %>
 <% end %>
