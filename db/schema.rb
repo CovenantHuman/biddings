@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_05_233204) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_08_213605) do
   create_table "to_do_items", force: :cascade do |t|
     t.integer "to_do_list_id", null: false
     t.boolean "completed", null: false
@@ -21,18 +21,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_233204) do
   end
 
   create_table "to_do_list_invites", force: :cascade do |t|
-    t.integer "to_do_list_id"
     t.integer "inviter_id", null: false
     t.string "invitee_email", null: false
-    t.string "name"
-    t.integer "giver_id"
-    t.integer "recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["giver_id"], name: "index_to_do_list_invites_on_giver_id"
     t.index ["inviter_id"], name: "index_to_do_list_invites_on_inviter_id"
-    t.index ["recipient_id"], name: "index_to_do_list_invites_on_recipient_id"
-    t.index ["to_do_list_id"], name: "index_to_do_list_invites_on_to_do_list_id"
   end
 
   create_table "to_do_lists", force: :cascade do |t|
@@ -58,10 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_233204) do
   end
 
   add_foreign_key "to_do_items", "to_do_lists"
-  add_foreign_key "to_do_list_invites", "to_do_lists"
-  add_foreign_key "to_do_list_invites", "users", column: "giver_id"
   add_foreign_key "to_do_list_invites", "users", column: "inviter_id"
-  add_foreign_key "to_do_list_invites", "users", column: "recipient_id"
   add_foreign_key "to_do_lists", "users", column: "giver_id"
   add_foreign_key "to_do_lists", "users", column: "recipient_id"
 end
