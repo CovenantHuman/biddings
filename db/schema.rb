@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_08_213605) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_08_214358) do
   create_table "to_do_items", force: :cascade do |t|
     t.integer "to_do_list_id", null: false
     t.boolean "completed", null: false
@@ -35,8 +35,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_08_213605) do
     t.boolean "active", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "to_do_list_invite_id"
     t.index ["giver_id"], name: "index_to_do_lists_on_giver_id"
     t.index ["recipient_id"], name: "index_to_do_lists_on_recipient_id"
+    t.index ["to_do_list_invite_id"], name: "index_to_do_lists_on_to_do_list_invite_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_08_213605) do
 
   add_foreign_key "to_do_items", "to_do_lists"
   add_foreign_key "to_do_list_invites", "users", column: "inviter_id"
+  add_foreign_key "to_do_lists", "to_do_list_invites"
   add_foreign_key "to_do_lists", "users", column: "giver_id"
   add_foreign_key "to_do_lists", "users", column: "recipient_id"
 end
