@@ -7,7 +7,6 @@ class ToDoListInvitesController < ApplicationController
             @to_do_list_invite.send_to_do_list_invitation_email!
             redirect_to dashboard_path, notice: "Invitation Sent!"
         else
-            puts(@to_do_list_invite.errors)
             render :new, status: :unprocessable_entity
         end
     end
