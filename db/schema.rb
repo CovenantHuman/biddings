@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_08_220229) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_09_000140) do
   create_table "to_do_items", force: :cascade do |t|
     t.integer "to_do_list_id", null: false
     t.boolean "completed", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_08_220229) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "accepted_at"
+    t.index ["invitee_email"], name: "index_to_do_list_invites_on_invitee_email"
     t.index ["inviter_id"], name: "index_to_do_list_invites_on_inviter_id"
   end
 
