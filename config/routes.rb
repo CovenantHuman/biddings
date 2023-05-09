@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   get "account", to: "users#edit"
   delete "account", to: "users#destroy"
   get "dashboard", to: "dashboard#show"
-  resources :to_do_list_invites, except: [:edit, :update]
+  resources :to_do_list_invites, except: [:edit, :update] do
+    post "accept", to: "to_do_list_invites#accept"
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
