@@ -1,8 +1,23 @@
 <% unless @invitations.blank? %>
     <h2>Pending invitations</h2>
     <% for invitation in @invitations do %>
-        <p><%= invitation.inviter.name%> (<%= invitation.inviter.email %>) invited you to share to do lists!</p>
+        <p><%= invitation.inviter.name%> (<%= invitation.inviter.email %>) invited you to share to do lists!
+        <%= button_to "Accept", to_do_list_invite_accept_path(invitation), method: "post" %></p>
     <% end %>
 <% end %>
 
 <p><%= link_to "Invite!", new_to_do_list_invite_path %></p>
+
+<% unless @to_do_lists_given.blank? %>
+    <h2>To Do Lists Given</h2>
+    <% for to_do_list_given in @to_do_lists_given do %>
+        <p><%= to_do_list_given.name %></p>
+    <% end %>
+<% end %>
+
+<% unless @to_do_lists_received.blank? %>
+    <h2>To Do Lists Received</h2>
+    <% for to_do_list_received in @to_do_lists_received do %>
+        <p><%= to_do_list_received.name %></p>
+    <% end %>
+<% end %>
