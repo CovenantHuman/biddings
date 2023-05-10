@@ -1,5 +1,5 @@
 module SignInHelper
     def sign_in_as(user)
-      post sign_in_url(email: user.email, password: user.password)
+        post login_url(user: {email: user.email, password: "test"})
     end
 end

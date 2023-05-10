@@ -4,8 +4,10 @@ user_one:
   email: "one@example.com"
   password_digest: <%= BCrypt::Password.create("test", cost:1) %>
   name: "one"
+  confirmed_at: "2023-05-09T06:01:50"
 
 user_two:
   email: "two@example.com"
   password_digest: <%= BCrypt::Password.create("test", cost:1) %>
   name: "two"
+
