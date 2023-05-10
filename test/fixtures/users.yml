@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
+<% require 'bcrypt' %>
 user_one:
   email: "one@example.com"
-  password_digest: "test"
+  password_digest: <%= BCrypt::Password.create("test", cost:1) %>
   name: "one"
 
 user_two:
   email: "two@example.com"
-  password_digest: "test"
+  password_digest: <%= BCrypt::Password.create("test", cost:1) %>
   name: "two"
