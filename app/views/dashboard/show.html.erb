@@ -2,7 +2,7 @@
     <h2>Pending invitations</h2>
     <% for invitation in @invitations do %>
         <p><%= invitation.inviter.name%> (<%= invitation.inviter.email %>) invited you to share to do lists!
-        <%= button_to "Accept", to_do_list_invite_accept_path(invitation), method: "post" %></p>
+        <%= button_to "Accept", to_do_list_invite_accept_path(invitation), method: "post", test_id: "invitation-button-#{invitation.id}" %></p>
     <% end %>
 <% end %>
 
