@@ -11,13 +11,13 @@
 <% unless @to_do_lists_given.blank? %>
     <h2>To Do Lists Given</h2>
     <% for to_do_list_given in @to_do_lists_given do %>
-        <p><%= to_do_list_given.name %></p>
+        <p>To do list for <%= to_do_list_given.recipient.name %></p>
     <% end %>
 <% end %>
 
 <% unless @to_do_lists_received.blank? %>
     <h2>To Do Lists Received</h2>
     <% for to_do_list_received in @to_do_lists_received do %>
-        <p><%= to_do_list_received.name %></p>
+        <p>To do list from <%= to_do_list_received.giver.name %></p>
     <% end %>
 <% end %>
