@@ -12,3 +12,15 @@ user_two:
   name: "two"
   confirmed_at: "2023-05-09T08:01:50"
 
+user_with_list_one:
+  email: "three@example.com"
+  password_digest: <%= BCrypt::Password.create("test", cost:1) %> 
+  name: "three"
+  confirmed_at: "2023-05-09T10:01:50"
+  
+user_with_list_two:
+  email: "four@example.com"
+  password_digest: <%= BCrypt::Password.create("test", cost:1) %>
+  name: "four"
+  confirmed_at: "2023-05-09T11:01:50"
+

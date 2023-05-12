@@ -6,12 +6,10 @@
 #
 list_one:
   name: "list_one"
-  giver: user_one
-  recipient: user_two
-  active: true
+  giver: user_with_list_one
+  recipient: user_with_list_two
 
 list_two: 
   name: "list_two"
-  giver: user_two
-  recipient: user_one
-  active: false
+  giver: user_with_list_two
+  recipient: user_with_list_one
