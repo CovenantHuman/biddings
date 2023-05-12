@@ -35,5 +35,21 @@ class ToDoListInvitesControllerTest < ActionDispatch::IntegrationTest
     assert(ToDoList.find_by(to_do_list_invite_id: invite.id, giver_id: invitee.id, recipient_id: inviter.id))
     assert(ToDoList.find_by(to_do_list_invite_id: invite.id, giver_id: inviter.id, recipient_id: invitee.id))
   end
+
+  test "invitation failure when accepting invitation twice" do
+    inviter = users(:user_one)
+    invitee = users(:user_two)
+
+    sign_in_as inviter
+    post to_do_list_invites_path(to_do_list_invite:{invitee_email: invitee.email})
+    delete logout_path
+
+    sign_in_as invitee
+    invite = ToDoListInvite.find_by(inviter_id: users(:user_one).id) 
+    post to_do_list_invite_accept_path(to_do_list_invite_id: invite.id) 
+    post to_do_list_invite_accept_path(to_do_list_invite_id: invite.id)
+    assert_redirected_to dashboard_path
+    assert_equal "Invitation already accepted", flash[:notice]
+  end
 end
 
