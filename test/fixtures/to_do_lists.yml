@@ -13,3 +13,8 @@ list_two:
   name: "list_two"
   giver: user_with_list_two
   recipient: user_with_list_one
+
+list_three:
+  name: "list_three"
+  giver: user_with_list_two
+  recipient: user_with_list_three
