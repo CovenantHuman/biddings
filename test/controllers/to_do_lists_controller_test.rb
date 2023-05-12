@@ -6,4 +6,12 @@ class ToDoListControllerTest < ActionDispatch::IntegrationTest
     to_do_list = ToDoList.find_by(giver_id: users(:user_with_list_one))
     get to_do_list_path(id: to_do_list.id)
   end
+
+  test "users can only see to do lists associated with them" do
+    sign_in_as users(:user_with_list_one)
+    to_do_list = ToDoList.find_by(name: "list_three")
+    get to_do_list_path(id: to_do_list.id)
+    assert_response 404
+  end
+
 end
