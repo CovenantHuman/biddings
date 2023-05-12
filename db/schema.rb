@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_09_000140) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_11_235246) do
   create_table "to_do_items", force: :cascade do |t|
     t.integer "to_do_list_id", null: false
     t.boolean "completed", null: false
@@ -34,7 +34,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_000140) do
     t.string "name"
     t.integer "giver_id", null: false
     t.integer "recipient_id", null: false
-    t.boolean "active", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "to_do_list_invite_id"
