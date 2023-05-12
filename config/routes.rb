@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :to_do_list_invites, except: [:edit, :update] do
     post "accept", to: "to_do_list_invites#accept"
   end
+  resources :to_do_list, only: [:show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
