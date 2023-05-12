@@ -45,7 +45,7 @@ class ToDoListInvitesControllerTest < ActionDispatch::IntegrationTest
     delete logout_path
 
     sign_in_as invitee
-    invite = ToDoListInvite.find_by(inviter_id: users(:user_one).id) 
+    invite = ToDoListInvite.find_by(inviter_id: inviter.id) 
     post to_do_list_invite_accept_path(to_do_list_invite_id: invite.id) 
     post to_do_list_invite_accept_path(to_do_list_invite_id: invite.id)
     assert_redirected_to dashboard_path
