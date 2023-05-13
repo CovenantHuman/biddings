@@ -1,0 +1,5 @@
+<% if current_user.id == @to_do_list.giver_id%>
+    <h1>To do list for <%= @to_do_list.recipient.name %></h1>
+<% else %>
+    <h1>To do list from <%= @to_do_list.giver.name %></h1>
+<% end %>
