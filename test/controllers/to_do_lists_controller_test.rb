@@ -14,4 +14,9 @@ class ToDoListControllerTest < ActionDispatch::IntegrationTest
     assert_response 404
   end
 
+  test "if a to do list doesn't exist trying to go to it renders a 404" do
+    sign_in_as users(:user_one)
+    get to_do_list_path(id: 0)
+    assert_response 404
+  end
 end
