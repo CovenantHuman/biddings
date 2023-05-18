@@ -1,5 +1,12 @@
 <% if current_user.id == @to_do_list.giver_id%>
     <h1>To do list for <%= @to_do_list.recipient.name %></h1>
+    <% for to_do_item in @to_do_items %>
+    <p><%= to_do_item.name %></p>
+    <% end %>
+    <%= link_to "Create a new to do item", new_to_do_list_to_do_item_path(@to_do_list.id) %>
 <% else %>
     <h1>To do list from <%= @to_do_list.giver.name %></h1>
+    <% for to_do_item in @to_do_items %>
+    <p><%= to_do_item.name %></p>
+    <% end %>
 <% end %>

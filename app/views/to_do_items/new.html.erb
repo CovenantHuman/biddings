@@ -1,0 +1,7 @@
+<%= form_for [@to_do_list, @to_do_item] do |form| %>
+    <div>
+        <%= form.label :name, "What do you want #{@to_do_list.recipient.name} to do?" %>
+        <%= form.text_field :name, required: true %>
+    </div>
+    <%= form.submit "Add to To Do List" %>
+<% end %>
