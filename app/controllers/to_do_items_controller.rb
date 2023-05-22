@@ -15,6 +15,17 @@ class ToDoItemsController < ApplicationController
         @to_do_list = ToDoList.find(params[:to_do_list_id])
     end
 
+    def update
+        to_do_item = ToDoItem.find(params[:id])
+        to_do_item[:completed] = params[:completed]
+        notice = if to_do_item.save
+            "Item completed!"
+        else
+            "Something went wrong, please try to complete that item again."
+        end
+        redirect_to to_do_list_path(to_do_item.to_do_list_id), notice: notice
+    end
+
     private
 
     def create_to_do_item_params
