@@ -1,12 +1,24 @@
 <% if current_user.id == @to_do_list.giver_id%>
     <h1>To do list for <%= @to_do_list.recipient.name %></h1>
     <% for to_do_item in @to_do_items %>
-    <p><%= to_do_item.name %></p>
+        <p><%= to_do_item.name %></p>
     <% end %>
     <%= link_to "Create a new to do item", new_to_do_list_to_do_item_path(@to_do_list.id) %>
+    <% unless @to_done_items.blank?%>
+        <h2>Completed</h2>
+        <% for to_done_item in @to_done_items %>
+            <p><%= to_done_item.name %></p>
+        <% end %>
+    <% end %>
 <% else %>
     <h1>To do list from <%= @to_do_list.giver.name %></h1>
     <% for to_do_item in @to_do_items %>
-    <p><%= to_do_item.name %></p>
+    <p><%= to_do_item.name %> <%= button_to "Complete", to_do_item_path(to_do_item), method: "patch", name: "completed", value: true %></p>
+    <% end %>
+    <% unless @to_done_items.blank?%>
+        <h2>Completed</h2>
+        <% for to_done_item in @to_done_items %>
+            <p><%= to_done_item.name %></p>
+        <% end %>
     <% end %>
 <% end %>
